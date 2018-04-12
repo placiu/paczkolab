@@ -4,7 +4,6 @@ $(document).ready(function() {
 
     //// Show ADDRESS data in the view/address
     function loadAddressView() {
-
         $.ajax({
             type: 'GET',
             url: url,

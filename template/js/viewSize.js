@@ -1,26 +1,20 @@
 $(document).ready(function() {
-    var url = '../../router.php/size/',
-        viewSize = $('#view-size');
+    var url = '../../router.php/size/';
+    var viewSize = $('#view-size');
 
-    //// Show SIZE data in the view/size
     function loadSizeView() {
 
-        $.ajax({
-                type: 'GET',
-            url: url,
-            contentType: 'application/json',
-            dataType: 'json'
-        }).done(function (response) {
-            insertContentSize(response);
-        }).fail(function (response) {
-            alert( "Wystąpił błąd");
-        });
+        $.get(url)
+            .done(function (response) {
+                insertContentSize(response);
+            })
+            .fail(function () {
+                alert( "Wystąpił błąd");
+            });
     }
+
     loadSizeView();
 
-    // SIZE
-    // Create table element to put database inside
-    // Do action (edit, delete) on data in table
     function insertContentSize(size) {
         $.each(size, function(){
             var tr = $('<tr>'),
@@ -28,26 +22,24 @@ $(document).ready(function() {
                 tdSize = $('<td>', {class: "size"}),
                 tdPrice = $('<td>', {class: "price"}),
                 tdAction = $('<td>', {class: "action"}),
-                    actionDelete = $('<button>', {class: "delete-btn"}).text('Usuń'),
+                actionDelete = $('<button>', {class: "delete-btn"}).text('Usuń'),
                 actionEdit = $('<button>', {class: "edit-btn"}).text('Edytuj'),
                 actionForm = $('<form>', {class: "edit-form hide"}),
                 inputSize = $('<input>', {name: "size", id: "size"}),
                 inputPrice = $('<input>', {name: "price", id: "price"}),
                 inputSubmit = $('<input>', {type: "submit"});
 
-            // Create table element
             tr.append(tdId, tdSize, tdPrice, tdAction);
             tdAction.append(actionDelete, actionEdit, actionForm);
             actionForm.append(inputSize, inputPrice, inputSubmit);
 
-            // Show data from database in table
             viewSize.append(tr);
             tdId.text(this.id);
             tdSize.text(this.size);
             tdPrice.text(this.price);
         });
 
-        // ACTION - Edit SIZE data
+        // Action - edit
         viewSize.on('click', '.edit-btn', function(){
         
             var editForm = $(this).next('form');
@@ -87,7 +79,7 @@ $(document).ready(function() {
             });
         });
 
-        // ACTION - Delete SIZE data
+        // Action delete
         viewSize.on('click', '.delete-btn', function(e){
             e.preventDefault();
         

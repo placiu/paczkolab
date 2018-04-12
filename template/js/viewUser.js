@@ -95,7 +95,7 @@ $(document).ready(function() {
             
             edit.on('click', function(e){
                 e.preventDefault();
-                                
+
                 var addressid = this.address_id;
                 var name = $(this).siblings('#name').val();
                 var surname = $(this).siblings('#surname').val();

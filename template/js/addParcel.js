@@ -83,10 +83,13 @@ $(document).ready(function() {
     // Send new PARCEL to database
     $('#add-parcel input[type=submit]').on('click', function(event) {
         event.preventDefault();
+
         var address = $('#address_option option:selected').attr('data-id'),
             user = $('#user_option option:selected').attr('data-id'),
             size = $('#size_option option:selected').attr('data-id');
-            
+
+        console.log(address);
+
         $.ajax({
             type: 'POST',
             url: urlParcel,

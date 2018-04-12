@@ -49,7 +49,7 @@ $(document).ready(function() {
             function insertAddress(address) {
                 $.each(address, function() {
                     tdAddress.text(this.city + ' ' + this.code + ', ' +  this.street + ' ' + this.flat);
-                });    
+                });
             }
 
             var addressId = this.address_id;
@@ -117,9 +117,9 @@ $(document).ready(function() {
         // Delete PARCEL data
         viewParcel.on('click', '.delete-btn', function(e){
             e.preventDefault();
-        
+
             var id = $(this).parent().parent().find('td[class=id]').text();
-            
+
             $.ajax({
                 type: "DELETE",
                 url: url,
