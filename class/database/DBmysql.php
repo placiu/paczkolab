@@ -10,7 +10,6 @@ class DBmysql implements Database
      * @var PDO
      */
     private $dbh;
-
     /**
      * Error-return
      *
@@ -19,7 +18,6 @@ class DBmysql implements Database
      * @var string
      */
     private $error;
-
     /**
      * Database-statement
      *
@@ -36,12 +34,15 @@ class DBmysql implements Database
      */
     public function __construct($pdo = null)
     {
-        if ($pdo != null){
+        if ($pdo != null) {
             $this->dbh = $pdo;
-        }else {
-        
+        } else {
             $dbid = 'mysql:host=' . DB_SERVER_NAME . ';dbname=' . DB_BASE_NAME . ';charset=utf8';
-            $options = array(PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
+            $options = array(
+                PDO::ATTR_PERSISTENT => true,
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+            );
             try {
                 $this->dbh = new PDO($dbid, DB_USERNAME, DB_PASSWORD, $options);
                 $this->dbh = new PDO($dbid, DB_USERNAME, DB_PASSWORD, $options);
