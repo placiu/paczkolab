@@ -1,5 +1,7 @@
 <h2>Paczkolab</h2>
 
+Back-end developer: PHP course workshop.
+
 The aim of the workshop was to write an application to order parcel shipments.
 
 The application implements the following functions:
